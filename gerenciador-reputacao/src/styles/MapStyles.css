@@ -1,0 +1,368 @@
+body, html {
+  height: 100%;
+  margin: 0; 
+}
+
+.container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 100vh; 
+}
+
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('../static/fonts/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.graficos-sidebar {
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  top: 100px;
+  width: 600px;
+  right: 20px;
+  height: 300px;
+}
+
+.leaflet-marker-icon {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 35px;
+  height: 35px;
+}
+
+.borda-piscante {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 5px solid transparent; 
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+  pointer-events: none; 
+  animation: piscar 6s infinite; 
+  z-index: -1;
+}
+
+@keyframes piscar {
+  0% {
+    border-color: #00e5e5;
+    opacity: 1;
+  }
+  50% {
+    border-color: yellow;
+    opacity: 0.8;
+  }
+  100% {
+    border-color: #00e5e5;
+    opacity: 1;
+  }
+}
+
+
+.btn-dashboard {
+  font-size: 24px;
+  font-weight: bold; 
+  color: #ffffff;
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.btn-dashboard:hover {
+  color: #00e5e5;
+}
+
+.btn-dashboard::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px; 
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background-color: #00FFFF;
+  border-radius: 50px 50px 0 0; 
+  transition: width 0.3s ease; 
+}
+
+.btn-dashboard:hover::before{
+  width: 80%;
+}
+
+.custom-icon {
+  transform: translate(-50%, -100%);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.map-wrapper {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hud {
+  position: absolute;
+  top: 0.5px;
+  width: 100%;
+  color: #00FFFF;
+  font-family: 'Star Jedi';
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+.hud-login {
+  height: 100%;
+  top: 0.5px;
+  width: 100%;
+  color: #00FFFF;
+  font-family: 'Star Jedi';
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+.hud-titulo {
+  font-family: 'Star Jedi'; 
+  color: #26ffff; 
+  font-size: 36px; 
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+  margin-top: 0px;
+}
+
+
+.hud-subtitulo {
+  font-family: 'Star Jedi';
+  color: #26ffff;; 
+  font-size: 28px; 
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.hud-subtitulo-pop-in {
+  margin-bottom: 200px;
+}
+
+.hud-texto {
+  font-family: 'Arial', sans-serif;
+  color: #FFF;
+  font-size: 18px;
+}
+
+.hud-opcoes button {
+  background: none;
+  color: #00FFFF;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  background: #111;
+  color: #00FFFF;
+  padding: 20px;
+  border: 2px solid #00FFFF;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  z-index: 1000;
+  background-color: rgba(14, 22, 33, 0.7);
+}
+
+.filtros-modal {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 300px;
+  height: 40%;
+  background: #111;
+  color: #00FFFF;
+  padding: 20px;
+  border: 2px solid #00FFFF;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1000;
+}
+
+.filtros-modal, .modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.filtros-modal form, .modal form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filtros-modal input, .modal input, .filtros-modal textarea, .modal textarea, .filtros-modal select, .modal select {
+  width: 80%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.modal button {
+  margin-top: 20px;
+}
+
+.title-padding {
+  padding-left: 42px;
+}
+
+.hud-logout {
+  padding-right: 30px;
+}
+
+.filtros-modal.show {
+  opacity: 1;
+  transform: translateY(103px);
+  display: flex;
+  text-align: center;
+  background-color: rgba(14, 22, 33, 0.7);
+}
+
+.filtros-modal.hide {
+  opacity: 0;
+  transform: translateY(-103px);
+}
+
+.modal.show {
+  opacity: 1;
+  z-index: 2;
+  display: block;
+  background-color: rgba(14, 22, 33, 0.7);
+}
+
+.modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: none;
+}
+
+.leaflet-container {
+  z-index: 1;
+}
+ 
+.formulario, .search-filters, .modal, .filtros-modal, .graficos-sidebar {
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.formulario {
+  top: 100px;
+  left: 20px;
+}
+
+.search-filters {
+  top: 150px;
+}
+
+.filtros-modal {
+  bottom: 20px;
+  left: 20px;
+}
+
+.btn-starwars {
+  background-color: #0d0d0d;
+  color: #ffd700; 
+  font-family: 'Star Jedi', sans-serif; 
+  padding: 10px 20px;
+  border: 2px solid #2e86de; 
+  border-radius: 5px;
+  text-transform: uppercase; 
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-starwars:hover {
+  background-color: #2e86de; 
+  color: #0d0d0d; 
+  border: 2px solid #ffd700; 
+}
+
+.btn-starwars:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -75px;
+  width: 150px;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(35deg);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.btn-starwars:hover:before {
+  left: 120%;
+}
+
+.input-starwars {
+  background-color: #0d0d0d; 
+  color: #f1f1f1; 
+  border: 2px solid #2e86de; 
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-starwars:focus {
+  border-color: #ffd700; 
+  box-shadow: 0 0 8px 2px #ffd700; 
+}
+
+.btn-starwars, .input-starwars {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-starwars:hover, .input-starwars:focus {
+  box-shadow: 0 0 15px 5px #ffd700; 
+}
